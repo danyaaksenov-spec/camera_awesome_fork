@@ -66,6 +66,7 @@ abstract class CameraState {
     final previous = cameraContext.sensorConfig;
 
     SensorConfig next;
+    print('previous.sensors.length: ${previous.sensors.length}');
     if (previous.sensors.length <= 1) {
       print('aspectRatio: $aspectRatio');
       next = SensorConfig.single(
@@ -86,7 +87,7 @@ abstract class CameraState {
         sensors: newSensorsCopy
           ..insert(0, newSensorsCopy.removeAt(newSensorsCopy.length - 1)),
         // TODO Initial values are not set in native when set like this
-        aspectRatio: aspectRatio ?? CameraAspectRatios.ratio_4_3,
+        aspectRatio: CameraAspectRatios.ratio_16_9,
         zoom: zoom ?? 0.0,
         flashMode: flash ?? FlashMode.none,
       );
