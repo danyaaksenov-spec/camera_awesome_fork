@@ -67,12 +67,13 @@ abstract class CameraState {
 
     SensorConfig next;
     if (previous.sensors.length <= 1) {
+      print('aspectRatio: $aspectRatio');
       next = SensorConfig.single(
         sensor: previous.sensors.first.position == SensorPosition.back
             ? Sensor.position(SensorPosition.front)
             : Sensor.position(SensorPosition.back),
         // TODO Initial values are not set in native when set like this
-        aspectRatio: aspectRatio ?? CameraAspectRatios.ratio_16_9,
+        aspectRatio: CameraAspectRatios.ratio_16_9,
         zoom: zoom ?? 0.0,
         flashMode: flash ?? FlashMode.none,
       );
