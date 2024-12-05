@@ -92,11 +92,13 @@ abstract class CameraState {
         flashMode: flash ?? FlashMode.none,
       );
     }
+
+    print('setAspectRatio: 16:9');
+    await next.setAspectRatio(CameraAspectRatios.ratio_16_9);
+    
     await cameraContext.setSensorConfig(next);
 
     // TODO Once initial sensorConfig is correctly handled, we can remove below lines
-     print('setAspectRatio: 16:9');
-      await next.setAspectRatio(CameraAspectRatios.ratio_16_9);
     
     if (zoom != null) {
       await next.setZoom(zoom);
