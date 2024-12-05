@@ -66,9 +66,7 @@ abstract class CameraState {
     final previous = cameraContext.sensorConfig;
 
     SensorConfig next;
-    print('previous.sensors.length: ${previous.sensors.length}');
     if (previous.sensors.length <= 1) {
-      print('aspectRatio: $aspectRatio');
       next = SensorConfig.single(
         sensor: previous.sensors.first.position == SensorPosition.back
             ? Sensor.position(SensorPosition.front)
@@ -93,10 +91,11 @@ abstract class CameraState {
       );
     }
 
-    print('setAspectRatio: 16:9');
-    await next.setAspectRatio(CameraAspectRatios.ratio_16_9);
+    
     
     await cameraContext.setSensorConfig(next);
+
+    await next.setAspectRatio(CameraAspectRatios.ratio_16_9);
 
     // TODO Once initial sensorConfig is correctly handled, we can remove below lines
     
